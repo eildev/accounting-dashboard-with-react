@@ -6,6 +6,9 @@ const dashboardApiSlice = createApi({
     endpoints: (builder) => ({
         getData: builder.query({
             query: () => '/main/dashboard/data'
+        }),
+        getFooter: builder.query({
+            query: () => '/dashboard/footer/data'
         })
     })
 })
