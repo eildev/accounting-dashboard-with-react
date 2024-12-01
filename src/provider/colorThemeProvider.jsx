@@ -8,6 +8,7 @@ export const colorThemeProvider = createTheme({
           fontSize: "50px", // Default size for all icons
         },
       },
+      
     },
   },
 

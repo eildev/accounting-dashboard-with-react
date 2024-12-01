@@ -3,6 +3,7 @@ import ProfitLoss from "./section/ProfitLoss";
 import SalesAnalytics from "./section/SalesAnalytics";
 import DashboardCard from "../../components/DashboardCard";
 import { useGetDataQuery } from "../../redux/features/api/dashboardApiSlice";
+import TotalCost from "./section/TotalCost";
 
 const Dashboard = () => {
   const { data, error, isLoading } = useGetDataQuery();
