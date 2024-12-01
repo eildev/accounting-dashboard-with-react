@@ -1,9 +1,9 @@
 import { Grid } from "@mui/material";
-import DashboardCard from "../components/DashboardCard";
-import { useGetDataQuery } from "../redux/features/api/dashboardApiSlice";
 import { BarChart } from "@mui/x-charts/BarChart";
 import ProfitLoss from "./section/ProfitLoss";
 import SalesAnalytics from "./section/SalesAnalytics";
+import DashboardCard from "../../components/DashboardCard";
+import { useGetDataQuery } from "../../redux/features/api/dashboardApiSlice";
 
 const Dashboard = () => {
   const { data, error, isLoading } = useGetDataQuery();

@@ -1,8 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import MuiCard from "./MuiCard";
 import { ThemeProvider } from "@emotion/react";
-import { colorThemeProvider } from "../pages/Dashboard/provider/colorThemeProvider";
-import { DirectionsBikeTwoTone } from "@mui/icons-material";
+import { colorThemeProvider } from "../provider/colorThemeProvider";
 
 const DashboardCard = ({ element }) => {
   return (
