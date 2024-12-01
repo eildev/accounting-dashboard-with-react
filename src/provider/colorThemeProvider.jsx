@@ -11,6 +11,7 @@ export const colorThemeProvider = createTheme({
       
     },
   },
+
   typography: {
     body1: {
       color: "#878C90",

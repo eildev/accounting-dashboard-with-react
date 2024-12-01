@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-// import { BarChart } from "@mui/x-charts/BarChart";
+import { BarChart } from "@mui/x-charts/BarChart";
 import ProfitLoss from "./section/ProfitLoss";
 import SalesAnalytics from "./section/SalesAnalytics";
 import DashboardCard from "../../components/DashboardCard";
