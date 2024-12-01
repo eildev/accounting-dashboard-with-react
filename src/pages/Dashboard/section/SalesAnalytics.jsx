@@ -3,7 +3,12 @@
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
-import {  FormControl, Grid2, InputLabel, Select,  } from '@mui/material';
+import {  Box, FormControl, Grid2, InputLabel, Select, Stack, Typography,  } from '@mui/material';
+import { Paragraph } from '../../../components/Typography/MuiTypography';
+import MuiSelect from '../../../components/MuiSelect';
+import MuiCard from '../../../components/MuiCard';
+import { useState } from 'react';
+import { options } from '../../../data/data';
 
 const data = [
   { value: 5, label: 'Graphics' },
@@ -33,19 +38,37 @@ function PieCenterLabel({ children }) {
 }
 
 export default function SalesAnalytics() {
+  const [value, setValue] = useState("");
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
   return (
+    <MuiCard>
+    <Stack
+    direction="row"
+    spacing={0}
+    sx={{
+      justifyContent: "space-between",
+      alignItems: "center",
+    }}
+  >
+    <Box>
+      <Typography variant="h5">Sales Analytics</Typography>
+      <Paragraph>Jan 2021 -Jun 2021</Paragraph>
+    </Box>
+    <Box>
+      <MuiSelect
+        label="Year"
+        value={value}
+        handleChange={handleChange}
+        options={options}
+      />
+    </Box>
+  </Stack>
     <Grid2 container >
         <Grid2 container>
-        <h2>Sales Analytics</h2>
-        <FormControl fullWidth>
-        <InputLabel id="year-select-label">Year</InputLabel>
-        <Select
-          labelId="year-select-label"
-          value={2024}
-          label="Year"
-        >
-        </Select>
-    </FormControl>
+    
         </Grid2>
         <Grid2 size ={{sm:6 ,md:12}}>
         <PieChart series={[{ data, innerRadius: 70 }]} {...size}>
@@ -54,7 +77,7 @@ export default function SalesAnalytics() {
         </Grid2>
         
     </Grid2>
-    
+    </MuiCard>
   );
 }
 

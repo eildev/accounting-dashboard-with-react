@@ -1,5 +1,4 @@
-import { Grid } from "@mui/material";
-import { BarChart } from "@mui/x-charts/BarChart";
+import { Grid2 } from "@mui/material";
 import ProfitLoss from "./section/ProfitLoss";
 import SalesAnalytics from "./section/SalesAnalytics";
 import DashboardCard from "../../components/DashboardCard";
@@ -14,24 +13,20 @@ const Dashboard = () => {
 
   return (
     <>
-      <Grid container spacing={2}>
+    
+      <Grid2 container spacing={2}>
         {data.map((item) => (
           <DashboardCard key={item.id} element={item} />
         ))}
-      </Grid>
-      <Grid container spacing={2}>
-        <Grid item sx={7}>
+      </Grid2>
+      <Grid2 container spacing={2}>
+        <Grid2 size={{ xs: 12, md: 7 }}>
           <ProfitLoss />
-        </Grid>
-        <Grid item sx={5}>
+        </Grid2>
+        <Grid2 size={{ xs: 12, md: 5 }}>
           <SalesAnalytics />
-        </Grid>
-      </Grid>
-      <Grid container spacing={2}>
-        <Grid item sx={12}>
-        <TotalCost/>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </>
   );
 };
