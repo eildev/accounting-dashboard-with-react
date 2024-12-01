@@ -4,6 +4,7 @@ import ProfitLoss from "./section/ProfitLoss";
 import SalesAnalytics from "./section/SalesAnalytics";
 import DashboardCard from "../../components/DashboardCard";
 import { useGetDataQuery } from "../../redux/features/api/dashboardApiSlice";
+import TotalCost from "./section/TotalCost";
 
 const Dashboard = () => {
   const { data, error, isLoading } = useGetDataQuery();
@@ -24,6 +25,11 @@ const Dashboard = () => {
         </Grid>
         <Grid item sx={5}>
           <SalesAnalytics />
+        </Grid>
+      </Grid>
+      <Grid container spacing={2}>
+        <Grid item sx={12}>
+        <TotalCost/>
         </Grid>
       </Grid>
     </>

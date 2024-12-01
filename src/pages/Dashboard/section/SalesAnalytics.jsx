@@ -1,9 +1,9 @@
 
-import * as React from 'react';
+
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
-import { Box, FormControl, Grid2, InputLabel, Select, Typography } from '@mui/material';
+import {  FormControl, Grid2, InputLabel, Select,  } from '@mui/material';
 
 const data = [
   { value: 5, label: 'Graphics' },
