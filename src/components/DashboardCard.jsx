@@ -1,27 +1,27 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid2, Typography } from "@mui/material";
 import MuiCard from "./MuiCard";
 import { ThemeProvider } from "@emotion/react";
 import { colorThemeProvider } from "../provider/colorThemeProvider";
 
 const DashboardCard = ({ element }) => {
   return (
-    <Grid item xs={3}>
+    <Grid2 size={{ xs: 12, md: 6, lg: 3 }}>
       <MuiCard>
-        <Grid container spacing={2}>
-          <Grid item xs={8}>
+        <Grid2 container spacing={2}>
+          <Grid2 size={8}>
             <ThemeProvider theme={colorThemeProvider}>
               <Typography variant="body1">{element.name}</Typography>
               <Typography variant="h4">{element.value}</Typography>
             </ThemeProvider>
-          </Grid>
-          <Grid item xs={4}>
+          </Grid2>
+          <Grid2 size={4}>
             <ThemeProvider theme={colorThemeProvider}>
               <Typography variant="span">{element.icon}</Typography>
             </ThemeProvider>
-          </Grid>
-        </Grid>
+          </Grid2>
+        </Grid2>
       </MuiCard>
-    </Grid>
+    </Grid2>
   );
 };
 

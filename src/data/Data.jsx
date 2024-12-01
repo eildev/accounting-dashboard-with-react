@@ -94,3 +94,31 @@ export const dashBoardCardData = [
     icon: <RequestQuoteOutlined />,
   },
 ];
+
+export const options = [
+  {
+    id: "1",
+    title: 2024,
+    value: 2024,
+  },
+  {
+    id: "2",
+    title: 2023,
+    value: 2023,
+  },
+  {
+    id: "3",
+    title: 2022,
+    value: 2022,
+  },
+  {
+    id: "4",
+    title: 2021,
+    value: 2021,
+  },
+  {
+    id: "5",
+    title: 2020,
+    value: 2020,
+  },
+];
