@@ -19,10 +19,10 @@ const Dashboard = () => {
         ))}
       </Grid>
       <Grid container spacing={2}>
-        <Grid sx={7}>
+        <Grid item sx={7}>
           <ProfitLoss />
         </Grid>
-        <Grid sx={5}>
+        <Grid item sx={5}>
           <SalesAnalytics />
         </Grid>
       </Grid>
