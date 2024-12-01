@@ -13,6 +13,7 @@ const Dashboard = () => {
 
   return (
     <>
+    
       <Grid2 container spacing={2}>
         {data.map((item) => (
           <DashboardCard key={item.id} element={item} />
