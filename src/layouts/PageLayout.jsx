@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "../pages/Dashboard/Dashboard";
 
 const PageLayout = ({ pathname }) => {
   return <Dashboard />;

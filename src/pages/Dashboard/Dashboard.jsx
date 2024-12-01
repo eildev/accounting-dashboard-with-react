@@ -2,6 +2,8 @@ import { Grid } from "@mui/material";
 import DashboardCard from "../components/DashboardCard";
 import { useGetDataQuery } from "../redux/features/api/dashboardApiSlice";
 import { BarChart } from "@mui/x-charts/BarChart";
+import ProfitLoss from "./section/ProfitLoss";
+import SalesAnalytics from "./section/SalesAnalytics";
 
 const Dashboard = () => {
   const { data, error, isLoading } = useGetDataQuery();
@@ -17,8 +19,12 @@ const Dashboard = () => {
         ))}
       </Grid>
       <Grid container spacing={2}>
-        <Grid sx={7}></Grid>
-        <Grid sx={5}></Grid>
+        <Grid sx={7}>
+          <ProfitLoss />
+        </Grid>
+        <Grid sx={5}>
+          <SalesAnalytics />
+        </Grid>
       </Grid>
     </>
   );
