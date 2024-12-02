@@ -13,6 +13,6 @@ const dashboardApiSlice = createApi({
     })
 })
 
-export const { useGetDataQuery } = dashboardApiSlice;
+export const { useGetDataQuery, useGetFooterQuery } = dashboardApiSlice;
 
 export default dashboardApiSlice;

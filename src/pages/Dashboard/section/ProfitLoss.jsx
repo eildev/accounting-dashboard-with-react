@@ -1,10 +1,9 @@
-import { Box, Grid2, Stack, Typography } from "@mui/material";
+import { Grid2 } from "@mui/material";
 import MuiCard from "../../../components/MuiCard";
-import MuiSelect from "../../../components/MuiSelect";
-import { Paragraph } from "../../../components/Typography/MuiTypography";
 import { useState } from "react";
 import { options } from "../../../data/data";
 import { LineChart } from "@mui/x-charts";
+import ChartTitle from "../../../components/ChartTitle";
 
 const uData = [
   3000, 2000, 2780, 1890, 2390, 3490, 6778, 3490, 9283, 2347, 3490, 6778,
@@ -36,55 +35,28 @@ const ProfitLoss = () => {
 
   return (
     <MuiCard>
-      <Stack
-        direction="row"
-        spacing={0}
-        sx={{
-          justifyContent: "space-between",
-          alignItems: "center",
+      <ChartTitle
+        title="Profit Vs Loss"
+        subtitle="Jan 2021 - Jun 2021"
+        selectProps={{
+          label: "Year",
+          value: value,
+          handleChange: handleChange,
+          options: options,
         }}
-      >
-        <Box>
-          <Typography variant="h5">Profit vs Loss</Typography>
-          <Paragraph>Jan 2021 -Jun 2021</Paragraph>
-        </Box>
-        <Box>
-          <MuiSelect
-            label="Year"
-            value={value}
-            handleChange={handleChange}
-            options={options}
-          />
-        </Box>
-      </Stack>
+      />
+
       <Grid2 container spacing={2}>
         <Grid2 size={12}>
-          <Grid2 container spacing={4}>
-            <Grid2 size={4}>
-              <Typography variant="h4">1.74%</Typography>
-              <Paragraph>Net Profit %</Paragraph>
-            </Grid2>
-            <Grid2 size={8}>
-              <LineChart
-                width={500}
-                height={300}
-                series={[
-                  { data: pData, label: "Profit" },
-                  { data: uData, label: "Loss" },
-                ]}
-                xAxis={[{ scaleType: "point", data: xLabels }]}
-              />
-            </Grid2>
-          </Grid2>
-        </Grid2>
-        <Grid2 size={12}>
-          <Grid2 container spacing={4}>
-            <Grid2 size={4}>
-              <Typography variant="h4">1.74%</Typography>
-              <Paragraph>Net Loss %</Paragraph>
-            </Grid2>
-            <Grid2 size={8}></Grid2>
-          </Grid2>
+          <div style={{ width: "100%", height: "200px" }}>
+            <LineChart
+              series={[
+                { data: pData, label: "Profit" },
+                { data: uData, label: "Loss" },
+              ]}
+              xAxis={[{ scaleType: "point", data: xLabels }]}
+            />
+          </div>
         </Grid2>
       </Grid2>
     </MuiCard>

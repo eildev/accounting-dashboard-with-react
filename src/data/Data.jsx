@@ -4,10 +4,20 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LayersIcon from "@mui/icons-material/Layers";
 import {
+  AccountBalance,
   AccountBalanceWallet,
+  AlignVerticalTopRounded,
+  Article,
+  AssignmentInd,
+  AttachMoney,
+  AutoAwesomeMosaicRounded,
+  Campaign,
   CurrencyExchangeOutlined,
+  MoneyOff,
   RequestQuoteOutlined,
   SavingsOutlined,
+  ShoppingCart,
+  TrendingDown,
 } from "@mui/icons-material";
 
 export const navigation = [
@@ -122,3 +132,47 @@ export const options = [
     value: 2020,
   },
 ];
+
+export const statsData = [
+  {
+    id: 1,
+    title: "Cash Balance",
+    value: 100,
+    revenue: "32.45",
+    icon: <Article />,
+  },
+  {
+    id: 2,
+    title: "Bank Balance",
+    value: 6370,
+    revenue: "-11.01",
+    icon: <AssignmentInd />,
+  },
+  {
+    id: 3,
+    title: "Assets Purchase",
+    value: 6370,
+    revenue: "-51.01",
+    icon: <AlignVerticalTopRounded />,
+  },
+  {
+    id: 4,
+    title: "Marketing Cost",
+    value: 7245,
+    revenue: "41.02",
+    icon: <AutoAwesomeMosaicRounded />,
+  },
+];
+
+export const iconMap = {
+  Asset: <AccountBalance />,
+  Liabilities: <MoneyOff />,
+  Income: <AttachMoney />,
+  Expense: <TrendingDown />,
+};
+export const statsIconMap = {
+  CashBalance: <AttachMoney />,
+  BankBalance: <AccountBalance />,
+  AssetsPurchase: <ShoppingCart />,
+  MarketingCost: <Campaign />,
+};
