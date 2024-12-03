@@ -9,10 +9,13 @@ const dashboardApiSlice = createApi({
         }),
         getFooter: builder.query({
             query: () => '/dashboard/footer/data'
-        })
+        }),
+        getProfitLoss: builder.query({
+            query: () => '/dashboard/profit-loss/data'
+        }),
     })
 })
 
-export const { useGetDataQuery, useGetFooterQuery } = dashboardApiSlice;
+export const { useGetDataQuery, useGetFooterQuery, useGetProfitLossQuery } = dashboardApiSlice;
 
 export default dashboardApiSlice;

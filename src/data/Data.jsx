@@ -4,21 +4,23 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import DescriptionIcon from "@mui/icons-material/Description";
 import LayersIcon from "@mui/icons-material/Layers";
 import {
-  AccountBalance,
   AccountBalanceWallet,
   AlignVerticalTopRounded,
   Article,
   AssignmentInd,
-  AttachMoney,
   AutoAwesomeMosaicRounded,
-  Campaign,
   CurrencyExchangeOutlined,
-  MoneyOff,
   RequestQuoteOutlined,
   SavingsOutlined,
-  ShoppingCart,
-  TrendingDown,
 } from "@mui/icons-material";
+import AssetImage from "../../public/dashboard/assets.png";
+import LiabilitiesImage from "../../public/dashboard/liabilities.png";
+import IncomeImage from "../../public/dashboard/income.png";
+import ExpanseImage from "../../public/dashboard/expanse.png";
+import cashImage from "../../public/dashboard/cash.svg";
+import bankImage from "../../public/dashboard/bank.svg";
+import assetPurchaseImage from "../../public/dashboard/asset.svg";
+import marketingImage from "../../public/dashboard/marketing.svg";
 
 export const navigation = [
   {
@@ -165,14 +167,15 @@ export const statsData = [
 ];
 
 export const iconMap = {
-  Asset: <AccountBalance />,
-  Liabilities: <MoneyOff />,
-  Income: <AttachMoney />,
-  Expense: <TrendingDown />,
+  Asset: AssetImage,
+  Liabilities: LiabilitiesImage,
+  Income: IncomeImage,
+  Expense: ExpanseImage,
 };
+
 export const statsIconMap = {
-  CashBalance: <AttachMoney />,
-  BankBalance: <AccountBalance />,
-  AssetsPurchase: <ShoppingCart />,
-  MarketingCost: <Campaign />,
+  "Cash Balance": cashImage,
+  "Bank Balance": bankImage,
+  "Assets Purchase": assetPurchaseImage,
+  "Marketing Cost": marketingImage,
 };

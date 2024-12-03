@@ -1,29 +1,17 @@
 import { Grid2 } from "@mui/material";
 import ProfitLoss from "./section/ProfitLoss";
 import SalesAnalytics from "./section/SalesAnalytics";
-import DashboardCard from "../../components/DashboardCard";
-import { useGetDataQuery } from "../../redux/features/api/dashboardApiSlice";
 import TotalCost from "./section/TotalCost";
 import Purchase from "./section/Purchase";
 import Stats from "./section/Stats";
 import Revenue from "./section/Revenue";
+import TopCard from "./section/TopCard";
 
 const Dashboard = () => {
-  const { data, error, isLoading } = useGetDataQuery();
-
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
   return (
     <>
       <Grid2 container sx={{ margin: 2 }} spacing={2}>
-        {data?.data.slice(0, 4).map((item) => (
-          <DashboardCard
-            key={item.id}
-            element={item}
-            size={{ xs: 12, md: 6, lg: 3 }}
-          />
-        ))}
+        <TopCard />
       </Grid2>
       <Grid2 container sx={{ margin: 2 }} spacing={2}>
         <Grid2 size={{ xs: 12, md: 7 }}>

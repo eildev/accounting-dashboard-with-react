@@ -3,10 +3,9 @@ import MuiCard from "./MuiCard";
 import { ThemeProvider } from "@emotion/react";
 import { colorThemeProvider } from "../provider/colorThemeProvider";
 import { TrendingDownRounded, TrendingUpRounded } from "@mui/icons-material";
-import { iconMap } from "../data/data";
 
-const DashboardCard = ({ element, size }) => {
-  const icon = iconMap[element?.title ?? null];
+const DashboardCard = ({ element, size, images }) => {
+  const icon = images[element?.title] || <DefaultIcon />;
   return (
     <Grid2 size={size}>
       <MuiCard>
@@ -30,10 +29,14 @@ const DashboardCard = ({ element, size }) => {
               </Grid2>
             ) : null}
           </Grid2>
-          <Grid2 size={4}>
-            <ThemeProvider theme={colorThemeProvider}>
-              <Typography variant="span">{icon}</Typography>
-            </ThemeProvider>
+          <Grid2
+            size={4}
+            container
+            justifyContent="center"
+            alignItems="center"
+            sx={{ height: "100%" }}
+          >
+            <img src={icon} alt="" />
           </Grid2>
         </Grid2>
       </MuiCard>
