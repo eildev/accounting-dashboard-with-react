@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid2 } from "@mui/material";
 import MuiCard from "../../../components/MuiCard";
 import { useState } from "react";
 import { options } from "../../../data/data";
@@ -18,13 +18,6 @@ import { useGetProfitLossQuery } from "../../../redux/features/api/dashboardApiS
 const ProfitLoss = () => {
   const { data, isLoading, error } = useGetProfitLossQuery();
   const [value, setValue] = useState("");
-console.log(data)
-  // Transform the API data
-  const transformedData = data?.data?.map(item => ({
-    name: item.name,
-    profit: Number(item.profit.replace(/,/g, "")), // Convert profit to number
-    loss: Number(item.loss.replace(/,/g, "")), // Convert loss to number
-  })) || [];
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -32,7 +25,6 @@ console.log(data)
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  if (!transformedData.length) return <div>No data available</div>;
 
   return (
     <MuiCard>
@@ -45,12 +37,12 @@ console.log(data)
           options: options,
         }}
       />
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <div style={{ width: "100%", height: "300px" }}>
+      <Grid2 container spacing={2}>
+        <Grid2 size={12}>
+          <div style={{ width: "100%", height: "200px" }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
-                data={transformedData}
+                data={data?.data}
                 margin={{ top: 5, right: 50, left: 0, bottom: 5 }}
               >
                 {/* Grid lines */}
@@ -72,7 +64,7 @@ console.log(data)
                   axisLine={false}
                   tickLine={false}
                   tick={false}
-                  label ={false}
+                  label={false}
                 />
                 {/* Tooltip */}
                 <Tooltip
@@ -116,8 +108,8 @@ console.log(data)
               </LineChart>
             </ResponsiveContainer>
           </div>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
     </MuiCard>
   );
 };

@@ -18,7 +18,8 @@ const StyledText = styled("text")(({ theme }) => ({
   fill: theme.palette.text.primary,
   textAnchor: "middle",
   dominantBaseline: "central",
-  fontSize: 16,
+  fontSize: 20,
+  color: "#0056FD",
 }));
 
 function CustomLabel({ x, y, label }) {
@@ -43,6 +44,7 @@ function PieCenterLabel({ children }) {
 export default function SalesAnalytics() {
   const { data, error, isLoading } = useGetSalesAnalyticsQuery();
   const [value, setValue] = useState("");
+  console.log(data);
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -65,7 +67,7 @@ export default function SalesAnalytics() {
           <PieChart
             series={[
               {
-                data: data.data,
+                data: data?.data || [],
                 innerRadius: 70,
                 label: ({ x, y, label }) => (
                   <CustomLabel x={x} y={y} label={label} />
@@ -74,10 +76,7 @@ export default function SalesAnalytics() {
             ]}
             {...size}
           >
-            <PieCenterLabel>
-              <Paragraph>In store Sales</Paragraph>
-              <Typography>{data?.total}</Typography>
-            </PieCenterLabel>
+            <PieCenterLabel>{data?.total}</PieCenterLabel>
           </PieChart>
         </Grid2>
       </Grid2>
