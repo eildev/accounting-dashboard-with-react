@@ -15,8 +15,8 @@ import {
 } from "recharts";
 import { useGetCostInOutQuery } from "../../../redux/features/api/dashboardApiSlice";
 
-const TotalCost = () => {
-  const { data, isLoading, error } = useGetCostInOutQuery();
+const TotalCost = () => { 
+  const { data } = useGetCostInOutQuery();
   const [chartData, setChartData] = useState([]);
 
   // Map the API data dynamically if it's available
