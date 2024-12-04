@@ -3,7 +3,7 @@
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
-import {  Box, FormControl, Grid2, InputLabel, Select, Stack, Typography,  } from '@mui/material';
+import {  Box, Grid2,  Stack, Typography,  } from '@mui/material';
 import { Paragraph } from '../../../components/Typography/MuiTypography';
 import MuiSelect from '../../../components/MuiSelect';
 import MuiCard from '../../../components/MuiCard';
