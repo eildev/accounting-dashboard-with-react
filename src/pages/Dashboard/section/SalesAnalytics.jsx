@@ -1,17 +1,7 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useDrawingArea } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
-import {
-  Box,
-  FormControl,
-  Grid2,
-  InputLabel,
-  Select,
-  Stack,
-  Typography,
-} from "@mui/material";
-import { Paragraph } from "../../../components/Typography/MuiTypography";
-import MuiSelect from "../../../components/MuiSelect";
+import { Grid2 } from "@mui/material";
 import MuiCard from "../../../components/MuiCard";
 import { useState } from "react";
 import { options } from "../../../data/data";
@@ -32,8 +22,18 @@ const StyledText = styled("text")(({ theme }) => ({
   fill: theme.palette.text.primary,
   textAnchor: "middle",
   dominantBaseline: "central",
-  fontSize: 20,
+  fontSize: 16,
 }));
+
+function CustomLabel({ x, y, label }) {
+  return (
+    <StyledText x={x} y={y + 20}>
+      {" "}
+      {/* Move label down by adjusting the y value */}
+      {label}
+    </StyledText>
+  );
+}
 
 function PieCenterLabel({ children }) {
   const { width, height, left, top } = useDrawingArea();
@@ -50,6 +50,7 @@ export default function SalesAnalytics() {
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
   return (
     <MuiCard>
       <ChartTitle
@@ -64,7 +65,18 @@ export default function SalesAnalytics() {
       />
       <Grid2 container>
         <Grid2 size={{ sm: 6, md: 12 }}>
-          <PieChart series={[{ data, innerRadius: 70 }]} {...size}>
+          <PieChart
+            series={[
+              {
+                data,
+                innerRadius: 70,
+                label: ({ x, y, label }) => (
+                  <CustomLabel x={x} y={y} label={label} />
+                ),
+              },
+            ]}
+            {...size}
+          >
             <PieCenterLabel>In-store Sales</PieCenterLabel>
           </PieChart>
         </Grid2>
