@@ -1,4 +1,4 @@
-import { Grid2 } from "@mui/material";
+import { Grid } from "@mui/material";
 import MuiCard from "../../../components/MuiCard";
 import { useState } from "react";
 import { options } from "../../../data/data";
@@ -15,30 +15,24 @@ import {
 } from "recharts";
 import { useGetProfitLossQuery } from "../../../redux/features/api/dashboardApiSlice";
 
-const data = [
-  { name: "Jan", profit: 4000, loss: 2400 },
-  { name: "Feb", profit: 4000, loss: 2400 },
-  { name: "Mar", profit: 3000, loss: 1398 },
-  { name: "Apr", profit: 3000, loss: 1398 },
-  { name: "May", profit: 2000, loss: 9800 },
-  { name: "Jun", profit: 2000, loss: 9800 },
-  { name: "July", profit: 2780, loss: 3908 },
-  { name: "Aug", profit: 2780, loss: 3908 },
-  { name: "Sep", profit: 1890, loss: 4800 },
-  { name: "Oct", profit: 1890, loss: 4800 },
-  { name: "Nov", profit: 2390, loss: 3800 },
-  { name: "Dec", profit: 2390, loss: 3800 },
-];
-
 const ProfitLoss = () => {
-  // const { data, isLoading, error } = useGetProfitLossQuery();
+  const { data, isLoading, error } = useGetProfitLossQuery();
   const [value, setValue] = useState("");
-
-  console.log(data?.data);
+console.log(data)
+  // Transform the API data
+  const transformedData = data?.data?.map(item => ({
+    name: item.name,
+    profit: Number(item.profit.replace(/,/g, "")), // Convert profit to number
+    loss: Number(item.loss.replace(/,/g, "")), // Convert loss to number
+  })) || [];
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!transformedData.length) return <div>No data available</div>;
 
   return (
     <MuiCard>
@@ -51,43 +45,42 @@ const ProfitLoss = () => {
           options: options,
         }}
       />
-
-      <Grid2 container spacing={2}>
-        <Grid2 size={12}>
-          <div style={{ width: "100%", height: "200px" }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <div style={{ width: "100%", height: "300px" }}>
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
-                data={data}
+                data={transformedData}
                 margin={{ top: 5, right: 50, left: 0, bottom: 5 }}
               >
-                {/* Horizontal grid lines only */}
+                {/* Grid lines */}
                 <CartesianGrid
                   horizontal={false}
                   vertical={false}
                   strokeDasharray="3 3"
                   stroke="rgba(0, 0, 0, 0.1)"
                 />
-                {/* X-Axis: Smaller font size for ticks */}
+                {/* X-Axis */}
                 <XAxis
                   dataKey="name"
-                  axisLine={false} // Hides x-axis line
-                  tickLine={false} // Hides x-axis tick marks
-                  tick={{ fontSize: 10, fill: "#666" }} // Customize tick styling
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: 10, fill: "#666" }}
                 />
-                {/* Y-Axis: Hidden labels and minimal ticks */}
+                {/* Y-Axis */}
                 <YAxis
-                  axisLine={false} // Hides y-axis line
-                  tickLine={false} // Hides y-axis tick marks
-                  tick={false} // Hides y-axis labels
-                  label={false} // No y-axis label
+                  axisLine={false}
+                  tickLine={false}
+                  tick={false}
+                  label ={false}
                 />
-                {/* Tooltip for hover values */}
+                {/* Tooltip */}
                 <Tooltip
                   contentStyle={{
-                    background: "rgba(0, 0, 0, 0.8)", // Dark background
+                    background: "rgba(0, 0, 0, 0.8)",
                     color: "#fff",
                     border: "none",
-                    fontSize: 10, // Smaller tooltip text
+                    fontSize: 10,
                     borderRadius: 5,
                   }}
                 />
@@ -109,22 +102,22 @@ const ProfitLoss = () => {
                   dot={false}
                   activeDot={{ r: 5 }}
                 />
-                {/* Legend at the top */}
+                {/* Legend */}
                 <Legend
                   verticalAlign="top"
-                  align="left" // Align the legend to the left
+                  align="left"
                   wrapperStyle={{
-                    fontSize: "18px", // Increase font size
-                    fontWeight: "bold", // Optionally make the text bold
-                    marginLeft: "10px", // Add spacing to position it away from the chart's edge
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    marginLeft: "10px",
                     textTransform: "capitalize",
                   }}
                 />
               </LineChart>
             </ResponsiveContainer>
           </div>
-        </Grid2>
-      </Grid2>
+        </Grid>
+      </Grid>
     </MuiCard>
   );
 };

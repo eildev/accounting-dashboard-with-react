@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-
-
-import { PieChart } from '@mui/x-charts/PieChart';
-import { useDrawingArea } from '@mui/x-charts/hooks';
-import { styled } from '@mui/material/styles';
-import {  Box, Grid2,  Stack, Typography,  } from '@mui/material';
-import { Paragraph } from '../../../components/Typography/MuiTypography';
-import MuiSelect from '../../../components/MuiSelect';
-import MuiCard from '../../../components/MuiCard';
-import { useState } from 'react';
-import { options } from '../../../data/data';
-=======
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useDrawingArea } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
@@ -19,7 +6,6 @@ import MuiCard from "../../../components/MuiCard";
 import { useState } from "react";
 import { options } from "../../../data/data";
 import ChartTitle from "../../../components/ChartTitle";
->>>>>>> 367e7997b59933c6856fef6ef380a8a3a2634993
 
 const data = [
   { value: 5, label: "Graphics" },
