@@ -1,17 +1,13 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useDrawingArea } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
-import { Grid2 } from "@mui/material";
+import { Grid2, Typography } from "@mui/material";
 import MuiCard from "../../../components/MuiCard";
 import { useState } from "react";
 import { options } from "../../../data/data";
 import ChartTitle from "../../../components/ChartTitle";
-
-const data = [
-  { value: 5, label: "Graphics" },
-  { value: 10, label: "Website" },
-  { value: 15, label: "E-commerce" },
-];
+import { useGetSalesAnalyticsQuery } from "../../../redux/features/api/dashboardApiSlice";
+import { Paragraph } from "../../../components/Typography/MuiTypography";
 
 const size = {
   width: 400,
@@ -45,6 +41,7 @@ function PieCenterLabel({ children }) {
 }
 
 export default function SalesAnalytics() {
+  const { data, error, isLoading } = useGetSalesAnalyticsQuery();
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -68,7 +65,7 @@ export default function SalesAnalytics() {
           <PieChart
             series={[
               {
-                data,
+                data: data.data,
                 innerRadius: 70,
                 label: ({ x, y, label }) => (
                   <CustomLabel x={x} y={y} label={label} />
@@ -77,7 +74,10 @@ export default function SalesAnalytics() {
             ]}
             {...size}
           >
-            <PieCenterLabel>In-store Sales</PieCenterLabel>
+            <PieCenterLabel>
+              <Paragraph>In store Sales</Paragraph>
+              <Typography>{data?.total}</Typography>
+            </PieCenterLabel>
           </PieChart>
         </Grid2>
       </Grid2>

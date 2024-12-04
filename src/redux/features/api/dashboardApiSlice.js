@@ -16,6 +16,9 @@ const dashboardApiSlice = createApi({
         getCostInOut: builder.query({
             query: () => '/dashboard/costin-and-out/data'
         }),
+        getSalesAnalytics: builder.query({
+            query: () => '/dashboard/sales-analytics/data'
+        }),
     })
 })
 
