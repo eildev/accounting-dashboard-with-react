@@ -5,10 +5,22 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import LayersIcon from "@mui/icons-material/Layers";
 import {
   AccountBalanceWallet,
+  AlignVerticalTopRounded,
+  Article,
+  AssignmentInd,
+  AutoAwesomeMosaicRounded,
   CurrencyExchangeOutlined,
   RequestQuoteOutlined,
   SavingsOutlined,
 } from "@mui/icons-material";
+import AssetImage from "../../public/dashboard/assets.png";
+import LiabilitiesImage from "../../public/dashboard/liabilities.png";
+import IncomeImage from "../../public/dashboard/income.png";
+import ExpanseImage from "../../public/dashboard/expanse.png";
+import cashImage from "../../public/dashboard/cash.svg";
+import bankImage from "../../public/dashboard/bank.svg";
+import assetPurchaseImage from "../../public/dashboard/asset.svg";
+import marketingImage from "../../public/dashboard/marketing.svg";
 
 export const navigation = [
   {
@@ -122,3 +134,48 @@ export const options = [
     value: 2020,
   },
 ];
+
+export const statsData = [
+  {
+    id: 1,
+    title: "Cash Balance",
+    value: 100,
+    revenue: "32.45",
+    icon: <Article />,
+  },
+  {
+    id: 2,
+    title: "Bank Balance",
+    value: 6370,
+    revenue: "-11.01",
+    icon: <AssignmentInd />,
+  },
+  {
+    id: 3,
+    title: "Assets Purchase",
+    value: 6370,
+    revenue: "-51.01",
+    icon: <AlignVerticalTopRounded />,
+  },
+  {
+    id: 4,
+    title: "Marketing Cost",
+    value: 7245,
+    revenue: "41.02",
+    icon: <AutoAwesomeMosaicRounded />,
+  },
+];
+
+export const iconMap = {
+  Asset: AssetImage,
+  Liabilities: LiabilitiesImage,
+  Income: IncomeImage,
+  Expense: ExpanseImage,
+};
+
+export const statsIconMap = {
+  "Cash Balance": cashImage,
+  "Bank Balance": bankImage,
+  "Assets Purchase": assetPurchaseImage,
+  "Marketing Cost": marketingImage,
+};

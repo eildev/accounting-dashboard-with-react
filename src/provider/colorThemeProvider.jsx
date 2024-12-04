@@ -8,7 +8,6 @@ export const colorThemeProvider = createTheme({
           fontSize: "50px", // Default size for all icons
         },
       },
-      
     },
   },
 
@@ -18,7 +17,7 @@ export const colorThemeProvider = createTheme({
       fontSize: "16px",
     },
     h4: {
-      fontSize: "32px",
+      fontSize: "25px",
     },
     span: {
       color: "#0171FF",
