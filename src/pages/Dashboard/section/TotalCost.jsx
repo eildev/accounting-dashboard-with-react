@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ChartTitle from "../../../components/ChartTitle";
 import MuiCard from "../../../components/MuiCard";
 import { options } from "../../../data/data";
@@ -13,40 +13,34 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useGetCostInOutQuery } from "../../../redux/features/api/dashboardApiSlice";
 
-const uData = [
-  3000, 2000, 2780, 1890, 2390, 3490, 6778, 3490, 9283, 2347, 3490, 6778,
-];
-const pData = [
-  2400, 1398, 9800, 3908, 4800, 3800, 4300, 3490, 3763, 1247, 4589, 2346,
-];
-const xLabels = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+const TotalCost = () => { 
+  const { data } = useGetCostInOutQuery();
+  const [chartData, setChartData] = useState([]);
 
-const data = xLabels.map((label, index) => ({
-  month: label,
-  Receivable: pData[index],
-  Payable: uData[index],
-}));
+  // Map the API data dynamically if it's available
+  useEffect(() => {
+    if (data?.payableData && data?.receivableData) {
+      const xLabels = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+      ];
 
-const TotalCost = () => {
+      const dynamicData = xLabels.map((label, index) => ({
+        month: label,
+        Receivable: data.receivableData[index],
+        Payable: data.payableData[index],
+      }));
+
+      setChartData(dynamicData);
+    }
+  }, [data]);
+
   const [value, setValue] = useState("");
-
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
   return (
     <MuiCard>
       <ChartTitle
@@ -63,17 +57,13 @@ const TotalCost = () => {
         <Grid2 size={12}>
           <div style={{ width: "100%", height: 200 }}>
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data}>
+              <BarChart data={chartData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="month" />
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar
-                  dataKey="Receivable"
-                  fill="#8884d8"
-                  radius={[5, 5, 0, 0]}
-                />
+                <Bar dataKey="Receivable" fill="#8884d8" radius={[5, 5, 0, 0]} />
                 <Bar dataKey="Payable" fill="#82ca9d" radius={[5, 5, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
