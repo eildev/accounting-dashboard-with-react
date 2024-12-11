@@ -25,6 +25,9 @@ const dashboardApiSlice = createApi({
         getRevenueReport: builder.query({
             query: () => '/dashboard/revenue/report/'
         }),
+        getRevenueReport: builder.query({
+            query: () => '/dashboard/revenue/report/'
+        }),
     })
 })
 

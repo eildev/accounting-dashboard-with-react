@@ -19,12 +19,16 @@ const ChartTitle = ({
       <Paragraph>{subtitle}</Paragraph>
     </Box>
     <Box>
-      <MuiSelect
-        label={label}
-        value={value}
-        handleChange={handleChange}
-        options={options}
-      />
+      {options ? (
+        <MuiSelect
+          label={label}
+          value={value}
+          handleChange={handleChange}
+          options={options}
+        />
+      ) : (
+        ""
+      )}
     </Box>
   </Stack>
 );

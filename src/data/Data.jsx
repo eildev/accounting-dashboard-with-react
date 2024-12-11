@@ -10,6 +10,8 @@ import {
   AssignmentInd,
   AutoAwesomeMosaicRounded,
   CurrencyExchangeOutlined,
+  DashboardCustomizeRounded,
+  GridView,
   RequestQuoteOutlined,
   SavingsOutlined,
 } from "@mui/icons-material";
@@ -21,6 +23,12 @@ import cashImage from "../../public/dashboard/cash.svg";
 import bankImage from "../../public/dashboard/bank.svg";
 import assetPurchaseImage from "../../public/dashboard/asset.svg";
 import marketingImage from "../../public/dashboard/marketing.svg";
+import asset1 from "../assets/img/asset-dashboard/asset-1.svg";
+import asset2 from "../assets/img/asset-dashboard/asset-2.svg";
+import asset3 from "../assets/img/asset-dashboard/asset-3.svg";
+import asset4 from "../assets/img/asset-dashboard/asset-4.svg";
+import asset5 from "../assets/img/asset-dashboard/asset-5.svg";
+import asset6 from "../assets/img/asset-dashboard/asset-6.svg";
 
 export const navigation = [
   {
@@ -31,6 +39,11 @@ export const navigation = [
     segment: "dashboard",
     title: "Dashboard",
     icon: <DashboardIcon />,
+  },
+  {
+    segment: "assets-dashboard",
+    title: "Assets Dashboard",
+    icon: <GridView />,
   },
   {
     kind: "divider",
@@ -178,4 +191,13 @@ export const statsIconMap = {
   "Bank Balance": bankImage,
   "Assets Purchase": assetPurchaseImage,
   "Marketing Cost": marketingImage,
+};
+
+export const assetsImage = {
+  "Bank Balance": asset1,
+  "Cash Balance": asset2,
+  "Fixed Asset": asset3,
+  "Stock Value": asset4,
+  "Receivable Amount": asset5,
+  "Opening Capital": asset6,
 };
