@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import AssetDashboard from "../pages/AssetDashboard/AssetDashboard";
+import { Navigate } from "react-router-dom";
 
 const PageLayout = ({ pathname }) => {
+  const navigate = Navigate();
   // return <Dashboard />;
   // return <>{children}</>;
   // return (
@@ -15,6 +17,8 @@ const PageLayout = ({ pathname }) => {
     return <Dashboard />;
   } else if (pathname === "/assets-dashboard") {
     return <AssetDashboard />;
+  } else if (pathname === "/bank") {
+    return navigate("/bank");
   }
 };
 
