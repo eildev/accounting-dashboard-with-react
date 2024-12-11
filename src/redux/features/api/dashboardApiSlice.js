@@ -14,14 +14,28 @@ const dashboardApiSlice = createApi({
             query: () => '/dashboard/profit-loss/data'
         }),
         getCostInOut: builder.query({
-            query: () => '/dashboard/costin-and-out/data'
+            query: () => '/dashboard/cost-in-and-out/data/'
         }),
         getSalesAnalytics: builder.query({
             query: () => '/dashboard/sales-analytics/data'
         }),
+        getPurchaseReport: builder.query({
+            query: () => '/dashboard/purchase/report/'
+        }),
+        getRevenueReport: builder.query({
+            query: () => '/dashboard/revenue/report/'
+        }),
     })
 })
 
-export const { useGetDataQuery, useGetFooterQuery, useGetProfitLossQuery, useGetCostInOutQuery } = dashboardApiSlice;
+export const {
+    useGetDataQuery,
+    useGetFooterQuery,
+    useGetProfitLossQuery,
+    useGetCostInOutQuery,
+    useGetSalesAnalyticsQuery,
+    useGetPurchaseReportQuery,
+    useGetRevenueReportQuery
+} = dashboardApiSlice;
 
 export default dashboardApiSlice;

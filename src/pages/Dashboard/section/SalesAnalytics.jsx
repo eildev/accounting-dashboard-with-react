@@ -1,13 +1,12 @@
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useDrawingArea } from "@mui/x-charts/hooks";
 import { styled } from "@mui/material/styles";
-import { Grid2, Typography } from "@mui/material";
+import { Grid2, Skeleton } from "@mui/material";
 import MuiCard from "../../../components/MuiCard";
 import { useState } from "react";
 import { options } from "../../../data/data";
 import ChartTitle from "../../../components/ChartTitle";
 import { useGetSalesAnalyticsQuery } from "../../../redux/features/api/dashboardApiSlice";
-import { Paragraph } from "../../../components/Typography/MuiTypography";
 
 const size = {
   width: 400,
@@ -44,11 +43,14 @@ function PieCenterLabel({ children }) {
 export default function SalesAnalytics() {
   const { data, error, isLoading } = useGetSalesAnalyticsQuery();
   const [value, setValue] = useState("");
-  console.log(data);
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
+  if (isLoading)
+    return <Skeleton variant="rectangular" width="100%" height="100%" />;
+  if (error) return <p>{error?.error ? error?.error : error?.message}</p>;
 
   return (
     <MuiCard>

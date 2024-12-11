@@ -9,26 +9,35 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
-import { Grid2 } from "@mui/material";
+import { Grid2, Skeleton, Stack, Typography } from "@mui/material";
+import { Moving } from "@mui/icons-material";
+import { useTheme } from "@emotion/react";
+import { useGetPurchaseReportQuery } from "../../../redux/features/api/dashboardApiSlice";
 
-const data = [
-  { name: "Jan", uv: 4000, pv: 2400, amt: 2400 },
-  { name: "Mar", uv: 3000, pv: 1398, amt: 2210 },
-  { name: "May", uv: 2000, pv: 9800, amt: 2290 },
-  { name: "July", uv: 2780, pv: 3908, amt: 2000 },
-  { name: "Sep", uv: 1890, pv: 4800, amt: 2181 },
-  { name: "Nov", uv: 2390, pv: 3800, amt: 2500 },
-];
+// const data = [
+//   { name: "Jan", uv: 4000, pv: 2400, amt: 2400 },
+//   { name: "Mar", uv: 3000, pv: 1398, amt: 2210 },
+//   { name: "May", uv: 2000, pv: 9800, amt: 2290 },
+//   { name: "July", uv: 2780, pv: 3908, amt: 2000 },
+//   { name: "Sep", uv: 1890, pv: 4800, amt: 2181 },
+//   { name: "Nov", uv: 2390, pv: 3800, amt: 2500 },
+// ];
 
 const Purchase = () => {
   const [value, setValue] = useState("");
+  const theme = useTheme();
+  const { data, error, isLoading } = useGetPurchaseReportQuery();
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+
+  if (isLoading)
+    return <Skeleton variant="rectangular" width="100%" height="100%" />;
+  if (error) return <p>{error?.error ? error?.error : error?.message}</p>;
+
   return (
     <MuiCard>
       <ChartTitle
@@ -40,18 +49,65 @@ const Purchase = () => {
           options: options,
         }}
       />
+      <Stack
+        direction="row"
+        justifyContent="start"
+        alignItems="center"
+        spacing={1}
+        marginBottom="5px"
+      >
+        <Stack direction="row" sx={{ marginBottom: "10px" }}>
+          <Typography variant="h5" sx={{ color: "#0056FD" }}>
+            $<Typography variant="span">{data?.total}</Typography>
+          </Typography>
+        </Stack>
+        <Stack
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+          spacing={0.5}
+          sx={{
+            backgroundColor:
+              theme.palette.mode === "dark" ? "#1e1e1e" : "#F1F5F7",
+            padding: "2px 5px",
+            borderRadius: "5px",
+          }}
+        >
+          <Typography
+            variant="p"
+            sx={{
+              fontSize: "10px",
+              color: "#71CE97",
+            }}
+          >
+            <Moving
+              sx={{
+                fontSize: "12px",
+              }}
+            />
+          </Typography>
+          <Typography
+            variant="p"
+            sx={{
+              fontSize: "10px",
+            }}
+          >
+            +12%
+          </Typography>
+        </Stack>
+      </Stack>
       <Grid2 container spacing={2}>
         <Grid2 size={12}>
           <div
             style={{
               width: "100%",
-              height: "200px",
+              height: "160px",
               background: "transparent",
             }}
           >
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
-                data={data}
+                data={data?.data || []}
                 margin={{ top: 5, right: 20, left: 0, bottom: 5 }}
               >
                 {/* Horizontal grid lines only */}
@@ -81,7 +137,13 @@ const Purchase = () => {
                     fontSize: 10, // Smaller font size in tooltip
                   }}
                 />
-                <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                <Line
+                  type="monotone"
+                  dataKey="uv"
+                  stroke="#8884d8"
+                  dot={false}
+                  activeDot={{ r: 5 }}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>

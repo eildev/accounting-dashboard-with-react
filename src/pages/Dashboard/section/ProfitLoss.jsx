@@ -1,4 +1,4 @@
-import { Grid2 } from "@mui/material";
+import { Grid2, Skeleton } from "@mui/material";
 import MuiCard from "../../../components/MuiCard";
 import { useState } from "react";
 import { options } from "../../../data/data";
@@ -23,8 +23,9 @@ const ProfitLoss = () => {
     setValue(e.target.value);
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (isLoading)
+    return <Skeleton variant="rectangular" width="100%" height="100%" />;
+  if (error) return <p>{error?.error ? error?.error : error?.message}</p>;
 
   return (
     <MuiCard>

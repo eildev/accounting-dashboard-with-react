@@ -15,7 +15,7 @@ import {
 } from "recharts";
 import { useGetCostInOutQuery } from "../../../redux/features/api/dashboardApiSlice";
 
-const TotalCost = () => { 
+const TotalCost = () => {
   const { data } = useGetCostInOutQuery();
   const [chartData, setChartData] = useState([]);
 
@@ -23,7 +23,18 @@ const TotalCost = () => {
   useEffect(() => {
     if (data?.payableData && data?.receivableData) {
       const xLabels = [
-        "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
       ];
 
       const dynamicData = xLabels.map((label, index) => ({
@@ -57,14 +68,45 @@ const TotalCost = () => {
         <Grid2 size={12}>
           <div style={{ width: "100%", height: 200 }}>
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis />
+              <BarChart
+                data={chartData}
+                margin={{ top: 5, right: 50, left: 0, bottom: 5 }}
+              >
+                <CartesianGrid
+                  horizontal={false}
+                  vertical={false}
+                  strokeDasharray="3 3"
+                  stroke="rgba(0, 0, 0, 0.1)"
+                />
+                <XAxis
+                  dataKey="month"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fontSize: 12, fill: "#666" }}
+                />
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={false}
+                  label={false}
+                />
                 <Tooltip />
-                <Legend />
-                <Bar dataKey="Receivable" fill="#8884d8" radius={[5, 5, 0, 0]} />
-                <Bar dataKey="Payable" fill="#82ca9d" radius={[5, 5, 0, 0]} />
+                <Legend
+                  verticalAlign="top"
+                  align="left"
+                  wrapperStyle={{
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    marginLeft: "10px",
+                    textTransform: "capitalize",
+                  }}
+                />
+                <Bar
+                  dataKey="Receivable"
+                  fill="#0056FD"
+                  radius={[5, 5, 0, 0]}
+                />
+                <Bar dataKey="Payable" fill="#5EC4F0" radius={[5, 5, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
