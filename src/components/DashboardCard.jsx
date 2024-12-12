@@ -13,7 +13,7 @@ const DashboardCard = ({ element, size, images }) => {
           <Grid2 size={8}>
             <ThemeProvider theme={colorThemeProvider}>
               <Typography variant="body1">{element?.title ?? ""}</Typography>
-              <Typography variant="h4">{element?.value ?? ""}</Typography>
+              <Typography variant="h5">{element?.value ?? ""}</Typography>
             </ThemeProvider>
             {element?.revenue ? (
               <Grid2 size={12}>
@@ -36,7 +36,14 @@ const DashboardCard = ({ element, size, images }) => {
             alignItems="center"
             sx={{ height: "100%" }}
           >
-            <img src={icon} alt="" />
+            <img
+              sx={{
+                height: "50px",
+                width: "50px",
+              }}
+              src={icon}
+              alt=""
+            />
           </Grid2>
         </Grid2>
       </MuiCard>

@@ -16,12 +16,13 @@ import {
 import { useGetCostInOutQuery } from "../../../redux/features/api/dashboardApiSlice";
 
 const TotalCost = () => {
-  const { data } = useGetCostInOutQuery();
+  const { data: costInOut } = useGetCostInOutQuery();
+  console.log(costInOut);
   const [chartData, setChartData] = useState([]);
 
   // Map the API data dynamically if it's available
   useEffect(() => {
-    if (data?.payableData && data?.receivableData) {
+    if (costInOut?.payableData && costInOut?.receivableData) {
       const xLabels = [
         "Jan",
         "Feb",
@@ -39,13 +40,13 @@ const TotalCost = () => {
 
       const dynamicData = xLabels.map((label, index) => ({
         month: label,
-        Receivable: data.receivableData[index],
-        Payable: data.payableData[index],
+        Receivable: costInOut.receivableData[index],
+        Payable: costInOut.payableData[index],
       }));
 
       setChartData(dynamicData);
     }
-  }, [data]);
+  }, [costInOut]);
 
   const [value, setValue] = useState("");
   const handleChange = (e) => {

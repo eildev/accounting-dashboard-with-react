@@ -16,8 +16,8 @@ export const colorThemeProvider = createTheme({
       color: "#878C90",
       fontSize: "16px",
     },
-    h4: {
-      fontSize: "25px",
+    h5: {
+      fontSize: "20px",
     },
     span: {
       color: "#0171FF",

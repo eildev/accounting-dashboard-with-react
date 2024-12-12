@@ -5,6 +5,7 @@ import { useDemoRouter } from "@toolpad/core/internal";
 import { navigation } from "../data/data";
 import demoThemeProvider from "../provider/demoThemeProvider";
 import PageLayout from "./PageLayout";
+import logo from "../assets/img/logo/accountant-logo.png";
 
 function DashboardLayoutBasic(props) {
   const { window } = props;
@@ -18,6 +19,10 @@ function DashboardLayoutBasic(props) {
     // preview-start
     <AppProvider
       navigation={navigation}
+      branding={{
+        logo: <img src={logo} alt="MUI logo" />,
+        title: false,
+      }}
       router={router}
       theme={demoThemeProvider}
       window={demoWindow}
