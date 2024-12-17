@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const dashboardApiSlice = createApi({
     reducerPath: 'dashboard',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://accountant.eclipseintellitech.com/api' }),
-    // baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:8000/api' }),
+    // baseQuery: fetchBaseQuery({ baseUrl: 'https://accountant.eclipseintellitech.com/api' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:8000/api' }),
     endpoints: (builder) => ({
         getData: builder.query({
             query: () => '/main/dashboard/data'
